@@ -12,7 +12,7 @@ collateral_ratio = 2       # Recommended collateral ratio between 1.5 and 2.
 # ----------------------- CONFIGURATION --------------------------
 
 # Returns the USD/SC price listed in coinmarketcap.com
-def siacoin_price():
+def get_siacoin_price():
     url = 'https://pro-api.coinmarketcap.com/v1/cryptocurrency/quotes/latest'
     parameters = {
         'symbol': 'SC',
@@ -32,19 +32,19 @@ def siacoin_price():
     except (ConnectionError, Timeout, TooManyRedirects) as e:
         print(e)
 
-download_price = usd_download_price / siacoin_price()
+siacoin_price = get_siacoin_price()
+download_price = usd_download_price / siacoin_price
 print("> Download price updating...", download_price, "SC")
 
-upload_price = usd_upload_price / siacoin_price()
+upload_price = usd_upload_price / siacoin_price
 print("> Upload price updating...  ", upload_price, "SC")
 
-storage_price = usd_storage_price / siacoin_price()
+storage_price = usd_storage_price / siacoin_price
 print("> Storage price updating... ", storage_price, "SC")
 
 collateral = storage_price * collateral_ratio
 print("> Collateral updating...    ", collateral, "SC")
 
-print("siac host config mindownloadbandwidthprice " + str(download_price) + " SC")
 if platform.system() == "Linux":
     os.system("siac host config mindownloadbandwidthprice " + str(download_price) + "SC")
     os.system("siac host config minuploadbandwidthprice " + str(upload_price) + "SC")
