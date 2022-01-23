@@ -1,14 +1,21 @@
-import os, platform
-from requests import Request, Session
+import os, platform, json
+from requests import Session
 from requests.exceptions import ConnectionError, Timeout, TooManyRedirects
-import json
+import yaml
+
+# Reading config.yaml
+with open("config.yaml", "r") as file:
+    try:
+        config = yaml.safe_load(file)
+    except yaml.YAMLError as exc:
+        print(exc)
 
 # ----------------------- CONFIGURATION --------------------------
-coinmarketcap_api = "YOUR_COINMARKETCAP_API_KEY"
-usd_upload_price = 0       # Unpload bandwidth price in USD
-usd_download_price = 25    # Download bandwidth price in USD
-usd_storage_price = 0.5    # Storage price in USD
-collateral_ratio = 2       # Recommended collateral ratio between 1.5 and 2.
+coinmarketcap_api = config["coinmarketcap_api"]
+usd_upload_price = config["usd_upload_price"]
+usd_download_price = config["usd_download_price"]
+usd_storage_price = config["usd_storage_price"]
+collateral_ratio = config["collateral_ratio"]
 # ----------------------- CONFIGURATION --------------------------
 
 # Returns the USD/SC price listed in coinmarketcap.com
