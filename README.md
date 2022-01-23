@@ -2,7 +2,7 @@
 
 1 Download the script from github.
 ```
-sudo git clone https://github.com/0xDreiker/sia-price-automation
+sudo git clone https://github.com/0xDreiker/sia-automation
 ```
 
 2 Give execution permissions to the script.
