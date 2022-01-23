@@ -7,12 +7,12 @@ sudo git clone https://github.com/0xDreiker/sia-automation
 
 2 Give execution permissions to the script.
 ```
+cd sia-automation
 sudo chmod 755 linux.py
 ```
 
 3 Modify the prices in config.yaml
 ```
-cd sia-automation  
 sudo nano config.yaml
 ```
 
