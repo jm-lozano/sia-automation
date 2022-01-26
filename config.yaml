@@ -2,7 +2,13 @@
 # Register in https://coinmarketcap.com/api/ to get an API key.
 coinmarketcap_api: "YOUR_COINMARKETCAP_API_KEY"
 
+# Price Settings
 usd_upload_price: 0        # Price in USD per TB of bandwidth upload.
-usd_download_price: 25     # Price in USD per TB of bandiwdth download.
-usd_storage_price: 0.5     # Price in USD per TB of stored data.
+usd_download_price: 20     # Price in USD per TB of bandiwdth download.
+usd_storage_price: 1    # Price in USD per TB of stored data.
 collateral_ratio: 2        # Recommended collateral ratio between 1.5 and 2.
+
+# Limits the storage price to a maximum & minimum.
+# Ej: Filebase will not use your host if storage_price > 150SC.
+siacoin_storage_price_min: 0
+siacoin_storage_price_max: 149
